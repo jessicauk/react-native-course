@@ -1,5 +1,12 @@
 import React, { useRef, useState } from "react";
-import { StyleSheet, TextInput, View, Button, Modal } from "react-native";
+import {
+  StyleSheet,
+  TextInput,
+  View,
+  Button,
+  Modal,
+  Image,
+} from "react-native";
 
 interface Props {
   onAddGoal: (value: string) => void;
@@ -23,17 +30,23 @@ export default function GoalInput({ onAddGoal, onCancel, visible }: Props) {
   };
 
   const addGoalHandler = () => {
-    onAddGoal(inputValue);
-    clearInput();
+    if (inputValue) {
+      onAddGoal(inputValue);
+      clearInput();
+    }
   };
 
   const cancelHandler = () => {
-    onCancel()
-  }
+    onCancel();
+  };
 
   return (
     <Modal visible={visible} animationType="slide">
       <View style={styles.inputContainer}>
+        <Image
+          source={require("../assets/images/goal.png")}
+          style={styles.image}
+        />
         <TextInput
           ref={textInputRef}
           style={styles.textInput}
@@ -42,8 +55,12 @@ export default function GoalInput({ onAddGoal, onCancel, visible }: Props) {
           value={inputValue}
         />
         <View style={styles.buttonContainer}>
-          <Button title="Add Goal" onPress={addGoalHandler} />
-          <Button title="Cancel" onPress={cancelHandler} />
+          <View style={styles.button}>
+            <Button title="Add Goal" onPress={addGoalHandler} />
+          </View>
+          <View style={styles.button}>
+            <Button title="Cancel" onPress={cancelHandler} />
+          </View>
         </View>
       </View>
     </Modal>
@@ -55,18 +72,27 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 1,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
+    padding: 16,
+    backgroundColor: "#311b6b",
   },
   textInput: {
     borderColor: "#CCC",
     borderWidth: 1,
-    flexBasis: "70%",
-    marginRight: 10,
+    width: "90%",
     padding: 8,
+    color: "#fff",
   },
   buttonContainer: {
-    flexDirection: "row"
-  }
+    flexDirection: "row",
+    marginTop: 16,
+  },
+  button: {
+    width: "43%",
+    marginHorizontal: 8,
+  },
+  image: {
+    width: 100,
+    height: 100,
+    margin: 20,
+  },
 });

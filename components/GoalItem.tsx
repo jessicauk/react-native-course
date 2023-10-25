@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     margin: 8,
     padding: 8,
     borderRadius: 6,
-    backgroundColor: "#5e0acc",
+    backgroundColor: "#311b6b",
   },
   textItem: {
     color: "#fff",

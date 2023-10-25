@@ -36,33 +36,36 @@ export default function App() {
     onCancelGoalHandler();
   };
   return (
-    <View style={styles.container}>
-      {!modalIsVisible && (
+    <>
+      <StatusBar style="light" />
+      <View style={styles.container}>
         <Button
           title="Add new goal"
-          color="#5e0acc"
+          // color="#311b6b"
           onPress={startAddGoalHandler}
         />
-      )}
-      <GoalInput
-        visible={modalIsVisible}
-        onAddGoal={addGoalHandler}
-        onCancel={onCancelGoalHandler}
-      />
-      <View style={styles.goalsContainer}>
-        <FlatList
-          data={courseGoals}
-          renderItem={(itemData) => {
-            return (
-              <GoalItem item={itemData.item} onDeleteItem={deleteGoalHandler} />
-            );
-          }}
-          keyExtractor={(item) => item.key}
-          alwaysBounceVertical={false}
+        <GoalInput
+          visible={modalIsVisible}
+          onAddGoal={addGoalHandler}
+          onCancel={onCancelGoalHandler}
         />
+        <View style={styles.goalsContainer}>
+          <FlatList
+            data={courseGoals}
+            renderItem={(itemData) => {
+              return (
+                <GoalItem
+                  item={itemData.item}
+                  onDeleteItem={deleteGoalHandler}
+                />
+              );
+            }}
+            keyExtractor={(item) => item.key}
+            alwaysBounceVertical={false}
+          />
+        </View>
       </View>
-      <StatusBar style="auto" />
-    </View>
+    </>
   );
 }
 
