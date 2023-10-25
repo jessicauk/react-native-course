@@ -41,7 +41,6 @@ export default function App() {
       <View style={styles.container}>
         <Button
           title="Add new goal"
-          // color="#311b6b"
           onPress={startAddGoalHandler}
         />
         <GoalInput
@@ -72,29 +71,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 50,
+    paddingTop: 150,
     paddingHorizontal: 16,
-  },
-  inputContainer: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 1,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-  },
-  textInput: {
-    borderColor: "#CCC",
-    borderWidth: 1,
-    flexBasis: "70%",
-    marginRight: 10,
-    padding: 8,
   },
   goalsContainer: {
     marginTop: 20,
     flex: 5,
-    borderBottomWidth: 1,
-    borderLeftColor: "#ccc",
   },
 });
