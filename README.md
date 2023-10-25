@@ -1,2 +1,2 @@
 # react-native-course
-React Native Course App
+React Native Course - Goal App
